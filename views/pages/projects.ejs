@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<section class="container" style="padding-top: 120px; padding-bottom: 100px;">
+    
+    <div style="text-align: center; margin-bottom: 80px;">
+        <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary); margin-bottom: 10px;">
+            02. My Portfolio
+        </p>
+        <h1 data-aos="fade-up" style="font-size: clamp(2.5rem, 5vw, 4rem);">
+            Some Things I’ve <span class="highlight">Built</span>
+        </h1>
+        <p data-aos="fade-up" data-aos-delay="100" style="margin: 20px auto 0; max-width: 500px;">
+            A deeper dive into my AI experiments, Full-Stack applications, and RAG pipelines.
+        </p>
+    </div>
+
+    <div class="grid">
+        <% if(projects.length > 0) { %>
+            <% projects.forEach((project, index) => { %>
+                <%- include('../partials/project-card', { project: project, index: index }) %>
+            <% }); %>
+        <% } else { %>
+            <div style="text-align: center; grid-column: 1/-1; padding: 50px;">
+                <h3 style="color: var(--text-muted);">No projects found.</h3>
+                <p>Add some projects in <code>data/projects.json</code>!</p>
+            </div>
+        <% } %>
+    </div>
+
+</section>
+
+<%- include('../partials/footer') %>

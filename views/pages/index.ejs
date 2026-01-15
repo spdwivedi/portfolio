@@ -1,0 +1,71 @@
+<%- include('../partials/header') %>
+
+<canvas id="particles-canvas"></canvas>
+
+<section class="container hero">
+    <div class="hero-content">
+        <span class="intro-mono" data-aos="fade-down" data-aos-delay="100">Hi, my name is</span>
+        
+        <h1 data-aos="fade-up" data-aos-delay="200">
+            S.P. Dwivedi.
+        </h1>
+        
+        <h2 style="color: var(--text-muted); margin-top: 10px; height: 1.5em;" data-aos="fade-up" data-aos-delay="300">
+            I build <span id="typewriter" class="highlight"></span><span class="cursor">|</span>
+        </h2>
+        
+        <p data-aos="fade-up" data-aos-delay="400" style="margin-top: 20px;">
+            I am an AI Engineer specializing in building (and occasionally designing) exceptional digital experiences. 
+            Currently, I’m focused on building accessible, human-centered <span class="highlight">Artificial Intelligence</span> products.
+        </p>
+        
+        <div style="margin-top: 3rem;" data-aos="fade-up" data-aos-delay="500">
+            <a href="/projects" class="btn btn-primary">Check out my work</a>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="padding: 100px 24px;">
+    <h3 data-aos="fade-right" style="display: flex; align-items: center; gap: 10px; margin-bottom: 40px;">
+        <span class="nav-number" style="font-size: 1.5rem;">01.</span> What I Do
+        <span style="height: 1px; width: 200px; background: rgba(255,255,255,0.1); margin-left: 20px;"></span>
+    </h3>
+    
+    <div class="grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fa-solid fa-brain" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+            <h3>Machine Learning</h3>
+            <p style="font-size: 0.95rem;">
+                Developing custom models using PyTorch & TensorFlow. From Computer Vision to NLP, I turn raw data into actionable insights.
+            </p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fa-solid fa-server" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+            <h3>Backend Engineering</h3>
+            <p style="font-size: 0.95rem;">
+                Building scalable APIs with Node.js and Python (FastAPI). I ensure your AI models are served fast, securely, and reliably.
+            </p>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
+            <h3>RAG Applications</h3>
+            <p style="font-size: 0.95rem;">
+                Specialized in Retrieval-Augmented Generation. I build Chatbots that actually understand your private business data.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="text-align: center; padding: 100px 0; margin-bottom: 50px;">
+    <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary);">04. What's Next?</p>
+    <h2 data-aos="zoom-in" style="font-size: 3rem; margin: 20px 0;">Get In Touch</h2>
+    <p style="margin: 0 auto 40px auto;" data-aos="fade-up">
+        Although I’m currently looking for any new opportunities, my inbox is always open. 
+        Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+    </p>
+    <a href="/contact" class="btn btn-primary" data-aos="fade-up">Say Hello</a>
+</section>
+
+<%- include('../partials/footer') %>

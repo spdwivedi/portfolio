@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Autonomous Drone Navigation",
+    "category": "Computer Vision",
+    "description": "A real-time object detection system for drone pathfinding using YOLOv8 and OpenCV.",
+    "tech": ["Python", "PyTorch", "OpenCV", "Raspberry Pi"],
+    "githubLink": "#",
+    "demoLink": "#",
+    "image": "/img/projects/drone.jpg"
+  },
+  {
+    "id": 2,
+    "title": "LLM Legal Assistant",
+    "category": "NLP / GenAI",
+    "description": "A RAG-based chatbot that answers legal questions by retrieving context from a vector database.",
+    "tech": ["LangChain", "Pinecone", "OpenAI API", "React"],
+    "githubLink": "#",
+    "demoLink": "#",
+    "image": "/img/projects/legal-ai.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Stock Market Predictor",
+    "category": "Time Series",
+    "description": "Predicting stock trends using LSTM neural networks and sentiment analysis on news headlines.",
+    "tech": ["TensorFlow", "Keras", "Pandas", "Scikit-learn"],
+    "githubLink": "#",
+    "demoLink": "#",
+    "image": "/img/projects/finance.jpg"
+  }
+]

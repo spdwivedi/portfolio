@@ -1,0 +1,36 @@
+</main> <footer style="margin-top: auto; padding: 20px 0; text-align: center; color: var(--text-muted);">
+        
+        <div class="social-links" style="margin-bottom: 20px;">
+            <a href="https://github.com/spdwivedi" target="_blank" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="mailto:your.email@example.com" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+
+        <p style="font-family: var(--font-mono); font-size: 0.8rem;">
+            Designed & Built by S.P. Dwivedi <br>
+            <span style="color: var(--accent-primary)">&copy; <%= new Date().getFullYear() %></span>
+        </p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="/js/main.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 1000,   // Animation lasts 1 second
+            once: true,       // Animation happens only once (doesn't repeat on scroll up)
+            mirror: false,
+            offset: 100       // Trigger animation 100px before element is visible
+        });
+    </script>
+
+    <script src="/js/particles.js"></script>
+</body>
+</html>

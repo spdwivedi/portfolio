@@ -1,0 +1,146 @@
+<%- include('../partials/header') %>
+
+<section class="container" style="padding-top: 120px; padding-bottom: 100px;">
+
+    <div class="about-grid" style="display: grid; grid-template-columns: 3fr 2fr; gap: 50px; align-items: start;">
+        
+        <div class="about-text" data-aos="fade-right">
+            <p class="intro-mono" style="color: var(--accent-primary); margin-bottom: 20px;">03. About Me</p>
+            
+            <h1 style="margin-bottom: 30px;">
+                I bridge the gap between <br> <span class="highlight">Data</span> and <span class="highlight">Deployment</span>.
+            </h1>
+            
+            <p>
+                Hello! My name is S.P. Dwivedi and I enjoy creating things that live on the internet, whether that be websites, applications, or intelligent agents. My interest in AI started back when I tried to teach a computer to play chess—turns out, teaching computers is harder than it looks!
+            </p>
+            
+            <p>
+                Fast-forward to today, and I’ve had the privilege of building software for <span class="highlight">RAG pipelines</span>, <span class="highlight">predictive models</span>, and <span class="highlight">mobile apps</span> like YogiAI.
+            </p>
+
+            <p>
+                Here are a few technologies I’ve been working with recently:
+            </p>
+            
+            <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; list-style: none; font-family: var(--font-mono); font-size: 0.9rem; margin-top: 20px;">
+                <li><span class="highlight">▹</span> Python (PyTorch)</li>
+                <li><span class="highlight">▹</span> Node.js</li>
+                <li><span class="highlight">▹</span> React / Next.js</li>
+                <li><span class="highlight">▹</span> MongoDB</li>
+                <li><span class="highlight">▹</span> Docker</li>
+                <li><span class="highlight">▹</span> LangChain</li>
+            </ul>
+        </div>
+
+        <div class="about-photo" data-aos="fade-left" style="position: relative; max-width: 300px; margin: 0 auto;">
+            <div class="photo-wrapper" style="position: relative; z-index: 1;">
+                <img src="/img/me.jpg" alt="Profile Photo" 
+                     onerror="this.src='https://ui-avatars.com/api/?name=SP&background=0a0a0e&color=00f2ea&size=300'"
+                     style="width: 100%; border-radius: 4px; display: block; filter: grayscale(100%) contrast(1.1); transition: 0.3s;">
+            </div>
+            
+            <div class="photo-border" style="
+                position: absolute; 
+                top: 20px; left: 20px; 
+                width: 100%; height: 100%; 
+                border: 2px solid var(--accent-primary); 
+                border-radius: 4px; 
+                z-index: 0; 
+                transition: 0.3s;">
+            </div>
+        </div>
+    </div>
+
+    </div> <div style="margin-top: 100px; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h2 data-aos="fade-up" style="text-align: center; margin-bottom: 50px;">Journey</h2>
+        
+        <div class="timeline">
+            
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2024 - Present</div>
+                <div class="timeline-content">
+                    <h3>AI Engineer</h3>
+                    <h4 class="highlight">YogiAI (Startup)</h4>
+                    <p>
+                        Leading the development of a RAG-based wellness application. 
+                        Engineering the mobile app using React Native and optimizing vector search with Pinecone & Gemini.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Oct 2025</div>
+                <div class="timeline-content">
+                    <h3>Hackathon Winner</h3>
+                    <h4 class="highlight">City Civic Tech</h4>
+                    <p>
+                        Built "Improve My City," a Django-based platform for tracking civic issues.
+                        Integrated geolocation APIs and automated ticket classification.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">July 2025</div>
+                <div class="timeline-content">
+                    <h3>Data Analyst Intern</h3>
+                    <h4 class="highlight">Smart Parking Sol.</h4>
+                    <p>
+                        Analyzed dynamic pricing models for parking lots. Generated visualization plots and optimized pricing algorithms using Python (Pandas/Scikit-Learn).
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2021 - 2025</div>
+                <div class="timeline-content">
+                    <h3>Bachelor of Technology</h3>
+                    <h4 class="highlight">Computer Science</h4>
+                    <p>
+                        Specialized in Machine Learning and Data Science. 
+                        Capstone Project: Handwritten Digit Recognition using custom KNN/SVM implementation.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div style="margin-top: 100px;">
+        <h2 data-aos="fade-up" style="text-align: center; margin-bottom: 50px;">Technical Proficiency</h2>
+        
+        <div class="grid">
+            <% if(skills && skills.length > 0) { %>
+                <% skills.forEach((category, index) => { %>
+                    <div class="card" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+                        <h3 style="color: var(--accent-primary); font-size: 1.2rem;"><%= category.category %></h3>
+                        <div style="margin-top: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                            <% category.items.forEach(item => { %>
+                                <span class="tech-tag" style="font-size: 0.9rem; padding: 6px 12px;"><%= item %></span>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    .photo-wrapper img:hover { filter: none !important; }
+    .about-photo:hover .photo-border { top: 10px; left: 10px; }
+    
+    @media (max-width: 768px) {
+        .about-grid { grid-template-columns: 1fr !important; }
+        .about-photo { margin-top: 50px !important; }
+    }
+</style>
+
+<%- include('../partials/footer') %>

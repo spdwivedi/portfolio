@@ -1,0 +1,14 @@
+[
+  {
+    "category": "Machine Learning",
+    "items": ["PyTorch", "TensorFlow", "Scikit-Learn", "Computer Vision", "NLP"]
+  },
+  {
+    "category": "Backend & Cloud",
+    "items": ["Node.js", "Python (FastAPI)", "Docker", "AWS", "MongoDB"]
+  },
+  {
+    "category": "Tools",
+    "items": ["Git/GitHub", "Jupyter", "Linux", "VS Code"]
+  }
+]

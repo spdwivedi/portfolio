@@ -1,0 +1,49 @@
+<div class="card" 
+     data-aos="fade-up" 
+     data-aos-delay="<%= typeof index !== 'undefined' ? index * 100 : 0 %>"
+     style="display: flex; flex-direction: column; height: 100%;">
+    
+    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        
+        <div class="folder-icon">
+            <i class="fa-regular fa-folder" style="font-size: 2.5rem; color: var(--accent-primary);"></i>
+        </div>
+        
+        <div class="project-links">
+            <% if(project.githubLink) { %>
+                <a href="<%= project.githubLink %>" target="_blank" aria-label="GitHub Link" style="margin-left: 15px;">
+                    <i class="fa-brands fa-github" style="font-size: 1.3rem; color: var(--text-muted); transition: 0.3s;"></i>
+                </a>
+            <% } %>
+            
+            <% if(project.demoLink && project.demoLink !== '#') { %>
+                <a href="<%= project.demoLink %>" target="_blank" aria-label="External Link" style="margin-left: 15px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 1.2rem; color: var(--text-muted); transition: 0.3s;"></i>
+                </a>
+            <% } %>
+        </div>
+    </header>
+
+    <h3 class="project-title" style="margin-bottom: 10px; color: var(--text-main);">
+        <a href="<%= project.githubLink %>" style="color: inherit;"><%= project.title %></a>
+    </h3>
+
+    <div class="project-description" style="flex-grow: 1;">
+        <p style="font-size: 1rem; color: var(--text-muted);">
+            <%= project.description %>
+        </p>
+    </div>
+
+    <footer style="margin-top: 20px;">
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0;">
+            <% project.tech.forEach(tech => { %>
+                <li class="tech-tag"><%= tech %></li>
+            <% }) %>
+        </ul>
+    </footer>
+
+</div>
+
+<style>
+    .project-links a:hover i { color: var(--accent-primary) !important; }
+</style>

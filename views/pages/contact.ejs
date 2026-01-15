@@ -1,0 +1,91 @@
+<%- include('../partials/header') %>
+
+<section class="container" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 20px;">
+
+    <div style="text-align: center; max-width: 600px; margin-bottom: 50px;">
+        <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary);">04. What's Next?</p>
+        <h1 data-aos="fade-up" style="font-size: clamp(3rem, 5vw, 4rem); margin-bottom: 20px;">Get In Touch</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            I am currently looking for new opportunities as an AI Engineer. Whether you have a question about my RAG pipeline, need a custom model, or just want to say hi, my inbox is always open!
+        </p>
+    </div>
+
+    <div class="contact-card" data-aos="zoom-in" data-aos-delay="200">
+        
+        <form action="https://formspree.io/f/YOUR_ID_HERE" method="POST">
+            
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Hello! I'd like to discuss a project..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                Send Message <i class="fa-solid fa-paper-plane" style="margin-left: 10px;"></i>
+            </button>
+
+        </form>
+    </div>
+
+    <div style="margin-top: 50px; text-align: center;" data-aos="fade-up" data-aos-delay="300">
+        <p style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 10px;">or shoot me an email directly:</p>
+        <a href="mailto:your.email@gmail.com" class="highlight" style="font-size: 1.2rem; font-weight: bold;">
+            your.email@gmail.com
+        </a>
+    </div>
+
+</section>
+
+<style>
+    .contact-card {
+        background: var(--bg-card);
+        padding: 40px;
+        border-radius: 12px;
+        border: 1px solid var(--glass-border);
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent-primary);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        border-radius: 4px;
+        color: var(--text-main);
+        font-family: var(--font-body);
+        font-size: 1rem;
+        transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 10px rgba(0, 242, 234, 0.1);
+    }
+</style>
+
+<%- include('../partials/footer') %>
