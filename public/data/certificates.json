@@ -1,0 +1,92 @@
+[
+  {
+    "title": "Complete Python Bootcamp: Go from Zero to Hero",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Machine Learning A-Z: AI, Python & R",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Deep Learning Specialization",
+    "issuer": "Coursera",
+    "date": "2025",
+    "link": "https://www.coursera.org/"
+  },
+  {
+    "title": "Generative AI with Large Language Models",
+    "issuer": "Coursera",
+    "date": "2025",
+    "link": "https://www.coursera.org/"
+  },
+  {
+    "title": "The Complete Node.js Developer Course",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "React Native - The Practical Guide",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Docker & Kubernetes: The Practical Guide",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "SQL and PostgreSQL: The Complete Developer's Guide",
+    "issuer": "Udemy",
+    "date": "2023",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Data Structures & Algorithms in Python",
+    "issuer": "Udemy",
+    "date": "2023",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Arduino Step by Step: Getting Started",
+    "issuer": "Udemy",
+    "date": "2024",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "IoT & Embedded Systems Programming",
+    "issuer": "Coursera",
+    "date": "2024",
+    "link": "https://www.coursera.org/"
+  },
+  {
+    "title": "Google Cloud Platform (GCP) Fundamentals",
+    "issuer": "Coursera",
+    "date": "2025",
+    "link": "https://cloud.google.com/"
+  },
+  {
+    "title": "Git & GitHub BootCamp",
+    "issuer": "Udemy",
+    "date": "2023",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Java Programming Masterclass",
+    "issuer": "Udemy",
+    "date": "2022",
+    "link": "https://www.udemy.com/"
+  },
+  {
+    "title": "Full Stack Web Development Bootcamp",
+    "issuer": "Udemy",
+    "date": "2022",
+    "link": "https://www.udemy.com/"
+  }
+]

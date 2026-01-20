@@ -3,29 +3,35 @@
 <section class="container" style="padding-top: 120px; padding-bottom: 100px;">
     
     <div style="text-align: center; margin-bottom: 80px;">
-        <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary); margin-bottom: 10px;">
-            02. My Portfolio
-        </p>
-        <h1 data-aos="fade-up" style="font-size: clamp(2.5rem, 5vw, 4rem);">
-            Some Things I’ve <span class="highlight">Built</span>
-        </h1>
-        <p data-aos="fade-up" data-aos-delay="100" style="margin: 20px auto 0; max-width: 500px;">
-            A deeper dive into my AI experiments, Full-Stack applications, and RAG pipelines.
-        </p>
+        <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary);">02. My Portfolio</p>
+        <h1 data-aos="fade-up">My <span class="highlight">Work</span></h1>
     </div>
 
-    <div class="grid">
-        <% if(projects.length > 0) { %>
-            <% projects.forEach((project, index) => { %>
-                <%- include('../partials/project-card', { project: project, index: index }) %>
-            <% }); %>
-        <% } else { %>
-            <div style="text-align: center; grid-column: 1/-1; padding: 50px;">
-                <h3 style="color: var(--text-muted);">No projects found.</h3>
-                <p>Add some projects in <code>data/projects.json</code>!</p>
+    <% function renderSection(title, icon, filterKey) { %>
+        <div class="project-category" style="margin-bottom: 100px;">
+            <h2 class="category-title" data-aos="fade-right" style="font-size: 1.8rem; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; display: inline-block;">
+                <i class="<%= icon %>" style="color: var(--accent-primary); margin-right: 10px;"></i> <%= title %>
+            </h2>
+            <div class="grid">
+                <% const filtered = projects.filter(p => p.category === filterKey); %>
+                <% if(filtered.length > 0) { %>
+                    <% filtered.forEach((project, index) => { %>
+                        <%- include('../partials/project-card', { project: project }) %>
+                    <% }); %>
+                <% } else { %>
+                    <p style="color: var(--text-muted); font-style: italic;">Adding projects soon...</p>
+                <% } %>
             </div>
-        <% } %>
-    </div>
+        </div>
+    <% } %>
+
+    <% renderSection('College Projects', 'fa-solid fa-graduation-cap', 'college') %>
+
+    <% renderSection('Personal Projects', 'fa-solid fa-user-astronaut', 'personal') %>
+
+    <% renderSection('Udemy Projects', 'fa-solid fa-video', 'udemy') %>
+
+    <% renderSection('Coursera Projects', 'fa-solid fa-certificate', 'coursera') %>
 
 </section>
 

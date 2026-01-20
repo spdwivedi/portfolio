@@ -23,6 +23,26 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET: Projects Page
+router.get('/projects', (req, res) => {
+    const projects = loadData('projects.json');
+    res.render('pages/projects', { 
+        title: 'Work', 
+        page: 'projects',
+        projects: projects
+    });
+});
+
+// GET: Certifications Page (NEW)
+router.get('/certifications', (req, res) => {
+    // We render the view. The data is fetched by the client (browser) 
+    // from '/data/certificates.json' to keep the page load fast.
+    res.render('pages/certificates', { 
+        title: 'Certifications', 
+        page: 'certifications'
+    });
+});
+
 // GET: About Page
 router.get('/about', (req, res) => {
     const skills = loadData('skills.json'); 
@@ -30,16 +50,6 @@ router.get('/about', (req, res) => {
         title: 'About Me', 
         page: 'about',
         skills: skills
-    });
-});
-
-// GET: Projects Page
-router.get('/projects', (req, res) => {
-    const projects = loadData('projects.json');
-    res.render('pages/projects', { 
-        title: 'AI Projects', 
-        page: 'projects',
-        projects: projects
     });
 });
 

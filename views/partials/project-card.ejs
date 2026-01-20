@@ -1,40 +1,46 @@
 <div class="card" 
      data-aos="fade-up" 
-     data-aos-delay="<%= typeof index !== 'undefined' ? index * 100 : 0 %>"
      style="display: flex; flex-direction: column; height: 100%;">
     
-    <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+    <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
         
         <div class="folder-icon">
             <i class="fa-regular fa-folder" style="font-size: 2.5rem; color: var(--accent-primary);"></i>
         </div>
         
-        <div class="project-links">
-            <% if(project.githubLink) { %>
-                <a href="<%= project.githubLink %>" target="_blank" aria-label="GitHub Link" style="margin-left: 15px;">
-                    <i class="fa-brands fa-github" style="font-size: 1.3rem; color: var(--text-muted); transition: 0.3s;"></i>
-                </a>
-            <% } %>
-            
-            <% if(project.demoLink && project.demoLink !== '#') { %>
-                <a href="<%= project.demoLink %>" target="_blank" aria-label="External Link" style="margin-left: 15px;">
-                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 1.2rem; color: var(--text-muted); transition: 0.3s;"></i>
-                </a>
+        <div class="project-links" style="display: flex; gap: 15px;">
+            <% if (project.links && project.links.length > 0) { %>
+                <% project.links.forEach(link => { %>
+                    <a href="<%= link.url %>" target="_blank" aria-label="<%= link.type %>" style="color: var(--text-muted); transition: 0.3s;">
+                        
+                        <% if (link.type === 'github') { %>
+                            <i class="fa-brands fa-github" title="View Code"></i>
+                        <% } else if (link.type === 'colab') { %>
+                            <i class="fa-solid fa-code" title="Open in Colab"></i> <% } else if (link.type === 'drive') { %>
+                            <i class="fa-brands fa-google-drive" title="View on Drive"></i>
+                        <% } else if (link.type === 'apk') { %>
+                            <i class="fa-brands fa-android" title="Download APK"></i>
+                        <% } else { %>
+                            <i class="fa-solid fa-external-link-alt" title="External Link"></i>
+                        <% } %>
+
+                    </a>
+                <% }) %>
             <% } %>
         </div>
     </header>
 
-    <h3 class="project-title" style="margin-bottom: 10px; color: var(--text-main);">
-        <a href="<%= project.githubLink %>" style="color: inherit;"><%= project.title %></a>
+    <h3 class="project-title" style="margin-bottom: 10px; color: var(--text-main); font-size: 1.4rem;">
+        <%= project.title %>
     </h3>
 
-    <div class="project-description" style="flex-grow: 1;">
-        <p style="font-size: 1rem; color: var(--text-muted);">
+    <div class="project-description" style="flex-grow: 1; margin-bottom: 20px;">
+        <p style="font-size: 0.95rem; color: var(--text-muted);">
             <%= project.description %>
         </p>
     </div>
 
-    <footer style="margin-top: 20px;">
+    <footer>
         <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0;">
             <% project.tech.forEach(tech => { %>
                 <li class="tech-tag"><%= tech %></li>
@@ -45,5 +51,6 @@
 </div>
 
 <style>
-    .project-links a:hover i { color: var(--accent-primary) !important; }
+    .project-links a:hover { color: var(--accent-primary) !important; transform: translateY(-2px); }
+    .project-links i { font-size: 1.3rem; }
 </style>

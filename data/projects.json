@@ -1,32 +1,80 @@
 [
   {
     "id": 1,
-    "title": "Autonomous Drone Navigation",
-    "category": "Computer Vision",
-    "description": "A real-time object detection system for drone pathfinding using YOLOv8 and OpenCV.",
-    "tech": ["Python", "PyTorch", "OpenCV", "Raspberry Pi"],
-    "githubLink": "#",
-    "demoLink": "#",
-    "image": "/img/projects/drone.jpg"
+    "title": "Active Learning (Capstone)",
+    "category": "college",
+    "description": "Implemented a novel Active Learning strategy using Policy Gradients for animal image classification.",
+    "tech": ["Python", "PyTorch", "Scikit-Learn"],
+    "links": [
+      { "type": "github", "url": "https://github.com/spdwivedi" }
+    ],
+    "image": "/img/projects/ml-project.jpg"
   },
   {
     "id": 2,
-    "title": "LLM Legal Assistant",
-    "category": "NLP / GenAI",
-    "description": "A RAG-based chatbot that answers legal questions by retrieving context from a vector database.",
-    "tech": ["LangChain", "Pinecone", "OpenAI API", "React"],
-    "githubLink": "#",
-    "demoLink": "#",
-    "image": "/img/projects/legal-ai.jpg"
+    "title": "Multi-modal AI Assistant",
+    "category": "college",
+    "description": "A conversational agent using Llama LLM with text-to-image (Stable Diffusion) capabilities.",
+    "tech": ["Python", "Llama 2", "Docker", "Ollama"],
+    "links": [
+      { "type": "github", "url": "https://github.com/spdwivedi" }
+    ],
+    "image": "/img/projects/ai-assistant.jpg"
   },
   {
     "id": 3,
-    "title": "Stock Market Predictor",
-    "category": "Time Series",
-    "description": "Predicting stock trends using LSTM neural networks and sentiment analysis on news headlines.",
-    "tech": ["TensorFlow", "Keras", "Pandas", "Scikit-learn"],
-    "githubLink": "#",
-    "demoLink": "#",
+    "title": "Autonomous Robotics (PRAYAS 3.0)",
+    "category": "college",
+    "description": "Engineered autonomous bots (line-following, obstacle-avoiding) using Arduino and IoT sensors.",
+    "tech": ["C++", "Arduino", "IoT", "Sensors"],
+    "links": [
+      { "type": "github", "url": "https://github.com/spdwivedi" }
+    ],
+    "image": "/img/projects/robotics.jpg"
+  },
+  {
+    "id": 4,
+    "title": "YogiAI App",
+    "category": "personal",
+    "description": "RAG-based wellness app built with React Native, Pinecone, and Gemini API.",
+    "tech": ["React Native", "Gemini", "Pinecone", "MongoDB"],
+    "links": [
+      { "type": "github", "url": "https://github.com/spdwivedi" },
+      { "type": "apk", "url": "#" }
+    ],
+    "image": "/img/projects/yogiai.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Stock Price Predictor",
+    "category": "udemy",
+    "description": "Stock trend prediction using LSTM neural networks (Udemy ML Bootcamp).",
+    "tech": ["TensorFlow", "Keras", "Pandas"],
+    "links": [
+      { "type": "drive", "url": "#" }
+    ],
     "image": "/img/projects/finance.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Self-Driving Car Sim",
+    "category": "coursera",
+    "description": "Lane detection and path planning using Computer Vision techniques.",
+    "tech": ["OpenCV", "Python"],
+    "links": [
+      { "type": "colab", "url": "#" }
+    ],
+    "image": "/img/projects/drone.jpg"
+  },
+  {
+    "id": 7,
+    "title": "E-Commerce Platform",
+    "category": "personal",
+    "description": "Full-stack shopping platform with cart functionality and payment integration.",
+    "tech": ["Java", "HTML/CSS", "SQL"],
+    "links": [
+      { "type": "github", "url": "https://github.com/spdwivedi" }
+    ],
+    "image": "/img/projects/ecommerce.jpg"
   }
 ]

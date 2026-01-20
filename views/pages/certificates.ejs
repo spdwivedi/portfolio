@@ -1,0 +1,145 @@
+<%- include('../partials/header') %>
+
+<section class="container" style="padding-top: 120px; padding-bottom: 100px;">
+    
+    <div style="text-align: center; margin-bottom: 60px;">
+        <p class="intro-mono" data-aos="fade-down" style="color: var(--accent-primary);">03. Continuous Learning</p>
+        <h1 data-aos="fade-up">My <span class="highlight">Certifications</span></h1>
+        <p data-aos="fade-up" data-aos-delay="100" style="margin: 20px auto; max-width: 600px;">
+            A collection of courses I've completed to stay sharp. <br>
+            <span style="font-size: 0.9rem; color: var(--accent-primary);">Total Count: <span id="cert-count">0</span>+</span>
+        </p>
+    </div>
+
+    <div class="search-wrapper" data-aos="fade-up" data-aos-delay="200" style="margin-bottom: 40px; display: flex; justify-content: center;">
+        <input type="text" id="searchInput" placeholder="Search by course name or technology..." 
+               style="width: 100%; max-width: 500px; padding: 15px; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--bg-card); color: var(--text-main); outline: none;">
+    </div>
+
+    <div class="table-container" data-aos="fade-up" data-aos-delay="300" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+            <thead>
+                <tr style="text-align: left; border-bottom: 1px solid var(--glass-border);">
+                    <th style="padding: 15px; color: var(--accent-primary);">Course Title</th>
+                    <th style="padding: 15px; color: var(--accent-primary);">Platform</th>
+                    <th style="padding: 15px; color: var(--accent-primary);">Year</th>
+                    <th style="padding: 15px; text-align: right; color: var(--accent-primary);">Verify</th>
+                </tr>
+            </thead>
+            <tbody id="certTableBody">
+                </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+        <button id="prevBtn" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem; margin-right: 10px;" disabled>Previous</button>
+        <span id="pageIndicator" style="font-family: var(--font-mono); margin: 0 10px;">Page 1</span>
+        <button id="nextBtn" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem; margin-left: 10px;">Next</button>
+    </div>
+
+</section>
+
+<script>
+    let allCerts = [];
+    let currentPage = 1;
+    const itemsPerPage = 20;
+
+    // Fetch Data on Load
+    fetch('/data/certificates.json') // Ensure you route static files correctly or move json to public/data if preferred
+        .then(response => {
+            if (!response.ok) {
+                 // If direct fetch fails (because it's in /data not /public), we might need a route.
+                 // Ideally, move certificates.json to /public/data/certificates.json for direct access
+                 // OR create a route in index.js to serve the JSON.
+                 // For now, let's assume you move the JSON to 'public/js/certificates.json' or similiar.
+                 throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            allCerts = data;
+            document.getElementById('cert-count').innerText = allCerts.length;
+            renderTable(allCerts);
+        })
+        .catch(error => {
+            console.error('Error loading certs:', error);
+            document.getElementById('certTableBody').innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 20px;">Failed to load data. Please try again later.</td></tr>';
+        });
+
+    // NOTE: For the fetch above to work, you must either:
+    // 1. Move `certificates.json` into the `public` folder.
+    // 2. OR add a route in index.js: router.get('/api/certs', (req,res) => res.json(loadData('certificates.json')));
+
+    const tableBody = document.getElementById('certTableBody');
+    const searchInput = document.getElementById('searchInput');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const pageIndicator = document.getElementById('pageIndicator');
+
+    function renderTable(data) {
+        tableBody.innerHTML = '';
+        
+        // Pagination Logic
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageData = data.slice(start, end);
+
+        if (pageData.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 20px;">No matching certificates found.</td></tr>';
+            return;
+        }
+
+        pageData.forEach(cert => {
+            const row = `
+                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.2s;">
+                    <td style="padding: 15px; font-weight: 500;">${cert.title}</td>
+                    <td style="padding: 15px; color: var(--text-muted);">${cert.issuer}</td>
+                    <td style="padding: 15px; font-family: var(--font-mono); font-size: 0.9rem;">${cert.date}</td>
+                    <td style="padding: 15px; text-align: right;">
+                        <a href="${cert.link}" target="_blank" style="color: var(--accent-primary);"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+
+        // Update Buttons
+        pageIndicator.innerText = `Page ${currentPage} of ${Math.ceil(data.length / itemsPerPage)}`;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = end >= data.length;
+    }
+
+    // Search Feature
+    searchInput.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const filtered = allCerts.filter(cert => 
+            cert.title.toLowerCase().includes(term) || 
+            cert.issuer.toLowerCase().includes(term)
+        );
+        currentPage = 1; // Reset to page 1 on search
+        renderTable(filtered);
+    });
+
+    // Pagination Listeners
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            // If searching, we should paginate the filtered list, but for simplicity:
+            const term = searchInput.value.toLowerCase();
+            const filtered = allCerts.filter(cert => cert.title.toLowerCase().includes(term));
+            renderTable(filtered);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const term = searchInput.value.toLowerCase();
+        const filtered = allCerts.filter(cert => cert.title.toLowerCase().includes(term));
+        if ((currentPage * itemsPerPage) < filtered.length) {
+            currentPage++;
+            renderTable(filtered);
+        }
+    });
+
+</script>
+
+<%- include('../partials/footer') %>
