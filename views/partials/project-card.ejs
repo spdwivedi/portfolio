@@ -1,6 +1,4 @@
-<div class="card" 
-     data-aos="fade-up" 
-     style="display: flex; flex-direction: column; height: 100%;">
+<div class="card" style="display: flex; flex-direction: column; height: 100%;">
     
     <header style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
         
@@ -9,23 +7,26 @@
         </div>
         
         <div class="project-links" style="display: flex; gap: 15px;">
-            <% if (project.links && project.links.length > 0) { %>
-                <% project.links.forEach(link => { %>
-                    <a href="<%= link.url %>" target="_blank" aria-label="<%= link.type %>" style="color: var(--text-muted); transition: 0.3s;">
-                        
-                        <% if (link.type === 'github') { %>
-                            <i class="fa-brands fa-github" title="View Code"></i>
-                        <% } else if (link.type === 'colab') { %>
-                            <i class="fa-solid fa-code" title="Open in Colab"></i> <% } else if (link.type === 'drive') { %>
-                            <i class="fa-brands fa-google-drive" title="View on Drive"></i>
-                        <% } else if (link.type === 'apk') { %>
-                            <i class="fa-brands fa-android" title="Download APK"></i>
-                        <% } else { %>
-                            <i class="fa-solid fa-external-link-alt" title="External Link"></i>
-                        <% } %>
-
+            <% if (project.links) { %>
+                
+                <% if (project.links.github) { %>
+                    <a href="<%= project.links.github %>" target="_blank" rel="noopener noreferrer" aria-label="View Code on GitHub" style="color: var(--text-muted); transition: 0.3s;">
+                        <i class="fa-brands fa-github" title="View Code Base"></i>
                     </a>
-                <% }) %>
+                <% } %>
+                
+                <% if (project.links.liveUrl) { %>
+                    <a href="<%= project.links.liveUrl %>" target="_blank" rel="noopener noreferrer" aria-label="View Live Deployment" style="color: var(--text-muted); transition: 0.3s;">
+                        <i class="fa-solid fa-external-link-alt" title="Live Demo App"></i>
+                    </a>
+                <% } %>
+                
+                <% if (project.links.datasetUrl) { %>
+                    <a href="<%= project.links.datasetUrl %>" target="_blank" rel="noopener noreferrer" aria-label="View Project Dataset" style="color: var(--text-muted); transition: 0.3s;">
+                        <i class="fa-brands fa-google-drive" title="View Dataset Link"></i>
+                    </a>
+                <% } %>
+                
             <% } %>
         </div>
     </header>
@@ -35,22 +36,30 @@
     </h3>
 
     <div class="project-description" style="flex-grow: 1; margin-bottom: 20px;">
-        <p style="font-size: 0.95rem; color: var(--text-muted);">
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;">
             <%= project.description %>
         </p>
     </div>
 
     <footer>
-        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0;">
-            <% project.tech.forEach(tech => { %>
-                <li class="tech-tag"><%= tech %></li>
-            <% }) %>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0;">
+            <% if (project.tags && project.tags.length > 0) { %>
+                <% project.tags.forEach(tag => { %>
+                    <li class="tech-tag" style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-primary); background: rgba(34, 211, 238, 0.1); padding: 4px 8px; border-radius: 4px;"><%= tag %></li>
+                <% }) %>
+            <% } else if (project.tech && project.tech.length > 0) { %>
+                <% project.tech.forEach(tech => { %>
+                    <li class="tech-tag" style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-primary); background: rgba(34, 211, 238, 0.1); padding: 4px 8px; border-radius: 4px;"><%= tech %></li>
+                <% }) %>
+            <% } %>
         </ul>
     </footer>
 
 </div>
 
 <style>
+    /* Scope card link animations smoothly without breaking global styling presets */
+    .project-links a { display: inline-block; }
     .project-links a:hover { color: var(--accent-primary) !important; transform: translateY(-2px); }
     .project-links i { font-size: 1.3rem; }
 </style>

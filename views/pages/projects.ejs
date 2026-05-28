@@ -1,3 +1,14 @@
+/**
+ * FILE DETAILS: Portfolio Projects View Layout Template
+ * -----------------------------------------------------
+ * This file constructs the user interface for the 'Work' page.
+ * To ensure complete IDE compatibility and zero linter validation errors:
+ * 1. It utilizes a clean configuration loop array instead of raw JavaScript functions.
+ * 2. It evaluates layout spacing properties dynamically inside an EJS string wrapper,
+ * preventing the VS Code CSS engine from throwing 'css-rcurlyexpected' false positives.
+ * 3. It filters backend data sets retrieved from MongoDB to distribute projects into structural grid rows.
+ */
+
 <%- include('../partials/header') %>
 
 <section class="container" style="padding-top: 120px; padding-bottom: 100px;">
@@ -7,31 +18,57 @@
         <h1 data-aos="fade-up">My <span class="highlight">Work</span></h1>
     </div>
 
-    <% function renderSection(title, icon, filterKey) { %>
+    <% 
+      // 1. Define category configurations in a clean array to bypass HTML parsing conflicts
+      const sections = [
+        { title: 'College Projects', icon: 'fa-solid fa-graduation-cap', key: 'college' },
+        { title: 'Personal Projects', icon: 'fa-solid fa-user-astronaut', key: 'personal' },
+        { title: 'Udemy Projects', icon: 'fa-solid fa-video', key: 'udemy' },
+        { title: 'Coursera Projects', icon: 'fa-solid fa-certificate', key: 'coursera' }
+      ];
+    %>
+
+    <% // 2. Loop through the structural sections sequentially %>
+    <% sections.forEach(section => { %>
         <div class="project-category" style="margin-bottom: 100px;">
+            
             <h2 class="category-title" data-aos="fade-right" style="font-size: 1.8rem; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; display: inline-block;">
-                <i class="<%= icon %>" style="color: var(--accent-primary); margin-right: 10px;"></i> <%= title %>
+                <i class="<%= section.icon %>" style="color: var(--accent-primary); margin-right: 10px;"></i> <%= section.title %>
             </h2>
-            <div class="grid">
-                <% const filtered = projects.filter(p => p.category === filterKey); %>
+            
+            <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; grid-auto-flow: dense;">
+                <% 
+                   // Filter records matching current category context strings
+                   const filtered = projects.filter(p => p.category === section.key || p.category.toLowerCase().includes(section.key.toLowerCase())); 
+                %>
+                
                 <% if(filtered.length > 0) { %>
-                    <% filtered.forEach((project, index) => { %>
-                        <%- include('../partials/project-card', { project: project }) %>
+                    <% filtered.forEach((project, index) => { 
+                        const size = project.layout?.size || 'normal';
+                        let cssRules = "";
+                        
+                        // Assemble the exact CSS grid rules strings based on sizing metadata blueprints
+                        if (size === 'wide-block') cssRules = "grid-column: span 2;";
+                        else if (size === 'tall-block') cssRules = "grid-row: span 2;";
+                        else if (size === 'large-block') cssRules = "grid-column: span 2; grid-row: span 2;";
+                    %>
+                        <div class="studio-grid-item size-<%= size %>" 
+                             data-aos="fade-up" 
+                             data-aos-delay="<%= index * 50 %>"
+                             <%= cssRules ? `style="${cssRules}"` : '' %>>
+                             
+                            <%- include('../partials/project-card', { project: project }) %>
+                            
+                        </div>
                     <% }); %>
                 <% } else { %>
-                    <p style="color: var(--text-muted); font-style: italic;">Adding projects soon...</p>
+                    <div style="grid-column: 1 / -1; padding: 40px; text-align: center; border: 1px dashed var(--glass-border); border-radius: 12px;">
+                        <p style="color: var(--text-muted); font-style: italic; margin: 0;">Adding engineering records soon...</p>
+                    </div>
                 <% } %>
             </div>
         </div>
-    <% } %>
-
-    <% renderSection('College Projects', 'fa-solid fa-graduation-cap', 'college') %>
-
-    <% renderSection('Personal Projects', 'fa-solid fa-user-astronaut', 'personal') %>
-
-    <% renderSection('Udemy Projects', 'fa-solid fa-video', 'udemy') %>
-
-    <% renderSection('Coursera Projects', 'fa-solid fa-certificate', 'coursera') %>
+    <% }); %>
 
 </section>
 
