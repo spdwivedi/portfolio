@@ -1,13 +1,14 @@
-/**
- * FILE DETAILS: Portfolio Projects View Layout Template
+<% /* * FILE DETAILS: Portfolio Projects Showcase View Layout Template
  * -----------------------------------------------------
- * This file constructs the user interface for the 'Work' page.
- * To ensure complete IDE compatibility and zero linter validation errors:
- * 1. It utilizes a clean configuration loop array instead of raw JavaScript functions.
- * 2. It evaluates layout spacing properties dynamically inside an EJS string wrapper,
- * preventing the VS Code CSS engine from throwing 'css-rcurlyexpected' false positives.
- * 3. It filters backend data sets retrieved from MongoDB to distribute projects into structural grid rows.
- */
+ * This file constructs the user interface for the public 'Work' page.
+ * Upgraded with futuristic presentation engines and strict linter-proof hooks:
+ * 1. Server-Side Comment Enclosure: [FIXED] Safely wraps file data comments inside proper 
+ * EJS compilation boundaries to permanently stop raw text leaking onto the header space.
+ * 2. Asymmetric 2x2 Matrix Stretching: [FIXED] Forces deep viewport dual-axis card scaling 
+ * by using flex alignments paired with explicit vertical height parameters.
+ * 3. Sci-Fi Canvas Intercept Matrix: Exposes real-time data variables (`data-project-brand`, 
+ * `data-hover-engine`) to feed telemetry arrays directly into your frontend scripts.
+ */ %>
 
 <%- include('../partials/header') %>
 
@@ -19,7 +20,7 @@
     </div>
 
     <% 
-      // 1. Define category configurations in a clean array to bypass HTML parsing conflicts
+      // Define category dictionary objects to safely loop and route records 
       const sections = [
         { title: 'College Projects', icon: 'fa-solid fa-graduation-cap', key: 'college' },
         { title: 'Personal Projects', icon: 'fa-solid fa-user-astronaut', key: 'personal' },
@@ -28,7 +29,7 @@
       ];
     %>
 
-    <% // 2. Loop through the structural sections sequentially %>
+    <% // Iterate through category rows independently %>
     <% sections.forEach(section => { %>
         <div class="project-category" style="margin-bottom: 100px;">
             
@@ -36,26 +37,30 @@
                 <i class="<%= section.icon %>" style="color: var(--accent-primary); margin-right: 10px;"></i> <%= section.title %>
             </h2>
             
-            <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; grid-auto-flow: dense;">
+            <div class="grid">
                 <% 
-                   // Filter records matching current category context strings
+                   // Filter backend datasets matching structural classification metrics
                    const filtered = projects.filter(p => p.category === section.key || p.category.toLowerCase().includes(section.key.toLowerCase())); 
                 %>
                 
                 <% if(filtered.length > 0) { %>
                     <% filtered.forEach((project, index) => { 
-                        const size = project.layout?.size || 'normal';
-                        let cssRules = "";
+                        const cardSize = project.layout?.size || 'normal';
+                        const elementColor = project.accentColor || '#00f2ea';
+                        const motionEngine = project.hoverAnimation || 'aura-glow';
                         
-                        // Assemble the exact CSS grid rules strings based on sizing metadata blueprints
-                        if (size === 'wide-block') cssRules = "grid-column: span 2;";
-                        else if (size === 'tall-block') cssRules = "grid-row: span 2;";
-                        else if (size === 'large-block') cssRules = "grid-column: span 2; grid-row: span 2;";
+                        // [FIXED] Re-engineered blueprint layout rules to guarantee cross-axis card stretching
+                        let layoutRules = "display: flex; flex-direction: column; align-self: stretch; width: 100%; height: 100%;";
+                        if (cardSize === 'wide-block') layoutRules += " grid-column: span 2;";
+                        else if (cardSize === 'tall-block') layoutRules += " grid-row: span 2;";
+                        else if (cardSize === 'large-block') layoutRules += " grid-column: span 2; grid-row: span 2; min-height: 480px;";
                     %>
-                        <div class="studio-grid-item size-<%= size %>" 
+                        <div class="studio-grid-item size-<%= cardSize %>" 
                              data-aos="fade-up" 
                              data-aos-delay="<%= index * 50 %>"
-                             <%= cssRules ? `style="${cssRules}"` : '' %>>
+                             data-project-brand="<%= elementColor %>"
+                             data-hover-engine="<%= motionEngine %>"
+                             <%- `style="${layoutRules} --card-brand-aura: ${elementColor};"` %>>
                              
                             <%- include('../partials/project-card', { project: project }) %>
                             

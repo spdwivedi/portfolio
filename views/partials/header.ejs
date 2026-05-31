@@ -1,3 +1,12 @@
+<% /* * FILE DETAILS: Portfolio Global Structural Header Partial Component
+ * -----------------------------------------------------
+ * This file constructs the core document framework and navigation cluster.
+ * Upgraded to implement explicit top-tier z-indexing parameters:
+ * 1. Layering Enforcement: Locks the interactive navbar to an elite z-index matrix
+ * ensuring navigation remains completely unblocked by active visual asset streams.
+ * 2. Preconnected Web-Fonts: Establishes low-latency CDN connection pipelines
+ * to render technical typography sets cleanly on slow connections.
+ */ %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +23,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 <body>
     
-    <nav id="navbar">
+    <nav id="navbar" style="position: sticky; top: 0; width: 100%; z-index: 1000000;">
         <div class="container nav-container">
             <a href="/" class="logo">
                 <span class="logo-symbol">◆</span> Dwivedi<span class="highlight">.AI</span>

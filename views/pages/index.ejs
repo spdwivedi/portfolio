@@ -1,8 +1,18 @@
+<% /* * FILE DETAILS: Main Landing Portal View Layout Template
+ * -----------------------------------------------------
+ * This file constructs the core gateway presentation for your portfolio.
+ * Upgraded to safely interface with your modular sci-fi animation pipeline:
+ * 1. Deep Core Intercepts: Wraps landing services in '.studio-grid-item' matrices 
+ * so they instantly inherit the 3D parallax physics and background glow anomalies.
+ * 2. Independent Custom branding: Sets explicit color and animation keys onto 
+ * service cards to showcase your capabilities right on the landing hero loop.
+ */ %>
+
 <%- include('../partials/header') %>
 
 <canvas id="particles-canvas"></canvas>
 
-<section class="container hero">
+<section class="container hero" style="padding-top: 60px;">
     <div class="hero-content">
         <span class="intro-mono" data-aos="fade-down" data-aos-delay="100">Hi, my name is</span>
         
@@ -25,35 +35,53 @@
     </div>
 </section>
 
-<section class="container" style="padding: 100px 24px;">
+<section class="container" style="padding: 100px 0px;">
     <h3 data-aos="fade-right" style="display: flex; align-items: center; gap: 10px; margin-bottom: 40px;">
         <span class="nav-number" style="font-size: 1.5rem;">01.</span> What I Do
         <span style="height: 1px; width: 200px; background: rgba(255,255,255,0.1); margin-left: 20px;"></span>
     </h3>
     
     <div class="grid">
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
-            <i class="fa-solid fa-brain" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
-            <h3>Machine Learning</h3>
-            <p style="font-size: 0.95rem;">
-                Developing custom models using PyTorch & TensorFlow. From Computer Vision to NLP, I turn raw data into actionable insights.
-            </p>
+        <div class="studio-grid-item size-normal" 
+             data-project-brand="#00f2ea" 
+             data-hover-engine="cyber-pulse"
+             data-aos="fade-up" 
+             data-aos-delay="100">
+            <div class="card">
+                <i class="fa-solid fa-brain" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px; transition: color 0.3s;"></i>
+                <h3 data-text="Machine Learning">Machine Learning</h3>
+                <p style="font-size: 0.95rem; margin: 0;">
+                    Developing custom models using PyTorch & TensorFlow. From Computer Vision to NLP, I turn raw data into actionable insights.
+                </p>
+            </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <i class="fa-solid fa-server" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
-            <h3>Backend Engineering</h3>
-            <p style="font-size: 0.95rem;">
-                Building scalable APIs with Node.js and Python (FastAPI). I ensure your AI models are served fast, securely, and reliably.
-            </p>
+        <div class="studio-grid-item size-normal" 
+             data-project-brand="#b500ff" 
+             data-hover-engine="glitch-drift"
+             data-aos="fade-up" 
+             data-aos-delay="200">
+            <div class="card">
+                <i class="fa-solid fa-server" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px; transition: color 0.3s;"></i>
+                <h3 data-text="Backend Engineering">Backend Engineering</h3>
+                <p style="font-size: 0.95rem; margin: 0;">
+                    Building scalable APIs with Node.js and Python (FastAPI). I ensure your AI models are served fast, securely, and reliably.
+                </p>
+            </div>
         </div>
 
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
-            <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px;"></i>
-            <h3>RAG Applications</h3>
-            <p style="font-size: 0.95rem;">
-                Specialized in Retrieval-Augmented Generation. I build Chatbots that actually understand your private business data.
-            </p>
+        <div class="studio-grid-item size-normal" 
+             data-project-brand="#39ff14" 
+             data-hover-engine="cyber-pulse"
+             data-aos="fade-up" 
+             data-aos-delay="300">
+            <div class="card">
+                <i class="fa-solid fa-layer-group" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 20px; transition: color 0.3s;"></i>
+                <h3 data-text="RAG Applications">RAG Applications</h3>
+                <p style="font-size: 0.95rem; margin: 0;">
+                    Specialized in Retrieval-Augmented Generation. I build Chatbots that actually understand your private business data.
+                </p>
+            </div>
         </div>
     </div>
 </section>

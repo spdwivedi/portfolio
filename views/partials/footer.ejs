@@ -1,40 +1,54 @@
+<% /* * FILE DETAILS: Portfolio Core Global Footer View Partial Template
+ * -----------------------------------------------------
+ * This file wraps the terminal content structures and script injections.
+ * Upgraded to implement a strict, event-driven module execution order:
+ * 1. Base Framework Libraries: Boots up AOS structural scrollers and background particle maps.
+ * 2. Main System Kernel (main.js): Runs first to clear core initialization lifecycle event tokens.
+ * 3. Modular Sci-Fi Asset Engine Files: Injects interaction layers, weather controllers, 
+ * and interactive pop-culture mascot simulations cleanly and in parallel.
+ */ %>
+
 </main>
-    <footer style="margin-top: auto; padding: 20px 0; text-align: center; color: var(--text-muted);">
+    
+    <footer style="margin-top: auto; padding: 30px 0; text-align: center; color: var(--text-muted); border-top: 1px solid var(--glass-border);">
         
         <div class="social-links" style="margin-bottom: 20px;">
-            <a href="https://github.com/spdwivedi" target="_blank" aria-label="GitHub" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+            <a href="https://github.com/spdwivedi" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style="margin: 0 15px; font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s ease;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/spdwivedi2001" target="_blank" aria-label="LinkedIn" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+            <a href="https://www.linkedin.com/in/spdwivedi2001" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="margin: 0 15px; font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s ease;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
                 <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="https://www.instagram.com/__s.p.dwivedi" target="_blank" aria-label="Instagram" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+            <a href="https://www.instagram.com/__s.p.dwivedi" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="margin: 0 15px; font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s ease;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://wa.me/9169124559" target="_blank" aria-label="WhatsApp" style="margin: 0 15px; font-size: 1.2rem; color: var(--text-muted);">
+            <a href="https://wa.me/9169124559" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style="margin: 0 15px; font-size: 1.25rem; color: var(--text-muted); transition: color 0.25s ease;" onmouseover="this.style.color='var(--accent-primary)'" onmouseout="this.style.color='var(--text-muted)'">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
         </div>
 
-        <p style="font-family: var(--font-mono); font-size: 0.8rem;">
-            Designed & Built by <span style="color: var(--accent-primary);">Surya Prakash Dwivedi</span> <br>
-            <span style="color: var(--accent-primary)">&copy; <%= new Date().getFullYear() %></span>
+        <p style="font-family: var(--font-mono); font-size: 0.8rem; margin: 0; line-height: 1.6; letter-spacing: 0.3px;">
+            Designed & Built by <span style="color: var(--accent-primary); text-shadow: 0 0 8px rgba(0,242,234,0.1); font-weight: 500;">Surya Prakash Dwivedi</span> <br>
+            <span style="color: var(--accent-primary); opacity: 0.85;">&copy; <%= new Date().getFullYear() %></span>
         </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/js/particles.js"></script>
 
     <script src="/js/main.js"></script>
 
+    <script src="/js/fxEngine.js"></script>
+    <script src="/js/environmentEngine.js"></script>
+    <script src="/js/mascotSandbox.js"></script>
+
     <script>
         AOS.init({
-            duration: 1000,   // Animation lasts 1 second
-            once: true,       // Animation happens only once (doesn't repeat on scroll up)
+            duration: 1000,   // Animation lasts exactly 1 second
+            once: true,       // Run animation sequences only once on viewport scrolling
             mirror: false,
-            offset: 100       // Trigger animation 100px before element is visible
+            offset: 100       // Trigger presentation layers 100px before bounding box cross-axis entry
         });
     </script>
-
-    <script src="/js/particles.js"></script>
 </body>
 </html>

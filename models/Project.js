@@ -1,14 +1,13 @@
 /**
- * FILE DETAILS: Data Schema Definition for Portfolio Projects
- * -----------------------------------------------------------
- * This file establishes the Mongoose structural schema rules for the 'projects' collection. 
- * It abstracts MongoDB interactions into a structured JavaScript object and configures:
- * 1. Textual descriptive details (Title, Description).
- * 2. Logical grouping metrics (Category string to group by 'College Projects', 'Personal Projects', etc.).
- * 3. Technology stack identification array (Tags used for rendering technology pill icons).
- * 4. Extensible asset link mapping object (Supporting GitHub, live site URLs, and dataset storage links).
- * 5. Structural layout and visual rendering instructions (Sizing attributes and ordering metrics 
- * to handle grid positioning and cool asymmetric blocks).
+ * FILE DETAILS: Futuristic Asymmetric Data Schema Definition for Portfolio Projects
+ * -------------------------------------------------------------------
+ * This file configures the structural validation rules for your MongoDB collections.
+ * Synchronized across both terminal clusters to support dynamic aura presentation nodes:
+ * 1. Project Specifications: Title, Category tracking, and Markdown descriptions.
+ * 2. Visual Layout Matrix: Dynamic size definitions for complex multi-column grid layouts.
+ * 3. State Infrastructure: Soft-deletion state boundaries for Recycle Bin protection.
+ * 4. Ambient Branding Properties: Stores dynamic brand hex codes and engine profiles
+ * to drive webpage color-morphing layouts automatically on hover states.
  */
 
 const mongoose = require('mongoose');
@@ -22,7 +21,7 @@ const projectSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        trim: true // Examples: 'College Projects', 'Personal Projects', 'Udemy Projects'
+        trim: true
     },
     description: {
         type: String,
@@ -31,7 +30,7 @@ const projectSchema = new mongoose.Schema({
     },
     tags: {
         type: [String],
-        default: [] // Array of tools used, e.g., ['React Native', 'Gemini', 'Pinecone']
+        default: []
     },
     links: {
         github: {
@@ -42,28 +41,42 @@ const projectSchema = new mongoose.Schema({
         liveUrl: {
             type: String,
             trim: true,
-            default: '' // Production site/live app url mapping
+            default: ''
         },
         datasetUrl: {
             type: String,
             trim: true,
-            default: '' // Link to Google Drive, Kaggle, or custom data sources
+            default: ''
         }
     },
     layout: {
         size: {
             type: String,
             enum: ['normal', 'wide-block', 'large-block', 'tall-block'],
-            default: 'normal' // Dictates CSS grid allocation styles for block variations
+            default: 'normal'
         },
         orderIndex: {
             type: Number,
-            default: 0 // Numeric indexing sequence value to cleanly handle drag-and-drop sort orders
+            default: 0
         }
+    },
+    // FUTURISTIC AMBIENT SKINS CHANNELS
+    accentColor: {
+        type: String,
+        default: '#00f2ea',
+        trim: true
+    },
+    hoverAnimation: {
+        type: String,
+        default: 'aura-glow',
+        trim: true
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 }, {
-    timestamps: true // Automatically tracks createdAt and updatedAt metrics for synchronization checks
+    timestamps: true
 });
 
-// Export the compiled schema to serve as our runtime Project database accessor model
 module.exports = mongoose.model('Project', projectSchema);

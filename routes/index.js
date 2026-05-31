@@ -1,17 +1,19 @@
 /**
- * FILE DETAILS: Main Application Routing Controller
- * -------------------------------------------------
+ * FILE DETAILS: Main Application Routing Controller (Settings Telemetry Patched)
+ * -----------------------------------------------------------------
  * This file acts as the central router mapping web URLs to their respective page controllers.
  * It coordinates data retrieval states before passing variables to EJS layout templates:
  * 1. Home Page Route ('/'): Renders the core introduction and particle mesh background canvas.
- * 2. Projects Page Route ('/projects'): Asynchronously queries MongoDB for all engineering records,
- * sorting them by their custom layout display sequence, and renders the Work layout panel.
+ * 2. Projects Page Route ('/projects'): Queries MongoDB for live engineering records
+ * explicitly filtering out soft-deleted items ({ isDeleted: { $ne: true } }), sorting by layout sequence.
  * 3. Certifications Page Route ('/certifications'): Renders the tabular continuous learning page framework.
  * 4. Certifications API Data Endpoint ('/api/certificates'): Queries MongoDB for academic course credentials
  * sorted by completion timelines, returning data records to the frontend client runtime script.
- * 5. About Page Route ('/about'): Retains fallback file-system parsing to load technical competency tags 
+ * 5. Matrix Settings Telemetry Endpoint ('/api/settings') [NEW]: Exposes runtime toggle states, 
+ * execution mode markers, and layout physics speeds directly to the client browser rendering nodes.
+ * 6. About Page Route ('/about'): Retains fallback file-system parsing to load technical competency tags 
  * from 'skills.json' while structural definitions await database migration.
- * 6. Contact Page Route ('/contact'): Serves the interactive communication options layout.
+ * 7. Contact Page Route ('/contact'): Serves the interactive communication options layout.
  */
 
 const express = require('express');
@@ -22,6 +24,7 @@ const path = require('path');
 // Import runtime Mongoose database schemas to handle queries
 const Project = require('../models/Project');
 const Certificate = require('../models/Certificate');
+const Setting = require('../models/Setting'); // GLOBAL TELEMETRY ENGINE BINDING
 
 /**
  * HELPER MODULE: Safely extracts and reads localized JSON files.
@@ -49,17 +52,18 @@ router.get('/', (req, res) => {
 });
 
 // ==========================================
-// 2. PROJECTS (WORK) ENDPOINT
+// 2. PROJECTS (WORK) ENDPOINT - UPDATED WITH ISDELETED FILTER
 // ==========================================
 router.get('/projects', async (req, res) => {
     try {
-        // Query MongoDB for all projects and organize them by your assigned layout orderIndex
-        const projects = await Project.find().sort({ 'layout.orderIndex': 1 });
+        // Only query documents where isDeleted is NOT true ($ne: true)
+        // This ensures recycled items from your editor vanish here instantly.
+        const projects = await Project.find({ isDeleted: { $ne: true } }).sort({ 'layout.orderIndex': 1 });
         
         res.render('pages/projects', { 
             title: 'Work', 
             page: 'projects',
-            projects: projects // Dynamic array passed down directly into EJS layout blocks
+            projects: projects // Dynamic filtered array passed directly to EJS layout blocks
         });
     } catch (err) {
         console.error('Database project fetch error:', err);
@@ -97,7 +101,36 @@ router.get('/api/certificates', async (req, res) => {
 });
 
 // ==========================================
-// 4. ABOUT ENDPOINT
+// 4. MATRIX GLOBAL COCKPIT SETTINGS TELEMETRY ENDPOINT (NEW)
+// ==========================================
+router.get('/api/settings', async (req, res) => {
+    try {
+        let currentSettings = await Setting.findOne();
+        
+        // Secure cluster fallback configuration if cloud database hasn't initiated settings collection row yet
+        if (!currentSettings) {
+            currentSettings = {
+                vfxEngineActive: true,
+                systemExecutionMode: 'ambient',
+                dayNightCycleActive: true,
+                shootingStarSpeed: 1.2,
+                fireworksClickProbability: 0.08,
+                marioPlatformerActive: true,
+                ironManActive: true,
+                ironManSpeed: 2.6,
+                thorStrikeActive: true,
+                jetFlybyActive: true
+            };
+        }
+        res.json(currentSettings);
+    } catch (err) {
+        console.error('Database setting telemetry compilation fault:', err);
+        res.status(500).json({ error: 'Failed to retrieve cloud interface configuration matrices.' });
+    }
+});
+
+// ==========================================
+// 5. ABOUT ENDPOINT
 // ==========================================
 router.get('/about', (req, res) => {
     // Keeps local file pipeline alive for tech tools metrics loading
@@ -110,7 +143,7 @@ router.get('/about', (req, res) => {
 });
 
 // ==========================================
-// 5. CONTACT ENDPOINT
+// 6. CONTACT ENDPOINT
 // ==========================================
 router.get('/contact', (req, res) => {
     res.render('pages/contact', { 
