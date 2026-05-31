@@ -1,4 +1,5 @@
 {
+  "_comment": "FILE DETAILS: Core package configuration managing project metadata, operational scripts, and third-party dependencies including Express, EJS rendering engine, Dotenv configuration, and Mongoose for MongoDB database abstraction.",
   "name": "portfolio",
   "version": "1.0.0",
   "description": "my portfolio_doc",
@@ -21,6 +22,7 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "ejs": "^4.0.1",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^8.10.0"
   }
 }
